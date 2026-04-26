@@ -1,0 +1,114 @@
+---
+import { getCollection } from 'astro:content';
+import FormattedDate from '../components/FormattedDate.astro';
+import SiteLayout from '../layouts/SiteLayout.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+
+const posts = (await getCollection('blog'))
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+	.slice(0, 3);
+---
+
+<SiteLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+	<section class="mx-auto max-w-6xl space-y-8">
+		<div class="grid gap-8 lg:grid-cols-[minmax(0,1.35fr)_340px]">
+			<div class="retro-panel overflow-hidden">
+				<div class="star-divider h-3 border-b-2 border-ocean-950"></div>
+				<div class="space-y-6 bg-sand-100 p-5 sm:p-7">
+					<div class="space-y-3">
+						<span class="retro-badge bg-pink-300">Welcome Screen</span>
+						<h1 class="retro-heading text-5xl leading-none sm:text-6xl">
+							A personal blog with dial-up energy.
+						</h1>
+						<p class="max-w-3xl text-xl leading-8 text-ocean-900">
+							This redesign borrows the bright borders, chunky boxes, and playful excess of early
+							personal sites, then fixes the part where those sites were exhausting to read.
+						</p>
+					</div>
+					<div class="grid gap-4 sm:grid-cols-2">
+						<div class="retro-inset p-4">
+							<p class="m-0 font-display text-sm font-black uppercase tracking-[0.18em] text-ocean-950">
+								Visual Rules
+							</p>
+							<p class="m-0 mt-2 text-base leading-7 text-ocean-900">
+								High contrast, roomy line length, restrained animation, and enough chaos to stay fun.
+							</p>
+						</div>
+						<div class="retro-inset p-4">
+							<p class="m-0 font-display text-sm font-black uppercase tracking-[0.18em] text-ocean-950">
+								Content Shape
+							</p>
+							<p class="m-0 mt-2 text-base leading-7 text-ocean-900">
+								Posts stay front and center, with the UI acting like framing instead of noise.
+							</p>
+						</div>
+					</div>
+					<div class="flex flex-wrap gap-3">
+						<a href="/blog" class="retro-button">Read the Blog</a>
+						<a href="/about" class="retro-button bg-mint-300">About This Site</a>
+					</div>
+				</div>
+			</div>
+
+			<aside class="retro-panel overflow-hidden">
+				<div class="star-divider h-3 border-b-2 border-ocean-950"></div>
+				<div class="space-y-4 bg-white/95 p-5">
+					<h2 class="retro-heading text-2xl">Site Facts</h2>
+					<div class="retro-inset p-4">
+						<p class="m-0 font-mono text-xs font-bold uppercase tracking-[0.18em] text-ocean-900">
+							Mood
+						</p>
+						<p class="m-0 mt-2 text-base leading-7 text-ocean-900">
+							GeoCities collage meets a blog that still respects your eyes.
+						</p>
+					</div>
+					<div class="retro-inset p-4">
+						<p class="m-0 font-mono text-xs font-bold uppercase tracking-[0.18em] text-ocean-900">
+							Stack
+						</p>
+						<p class="m-0 mt-2 text-base leading-7 text-ocean-900">
+							Astro content collections, local fonts, Tailwind 4 utilities.
+						</p>
+					</div>
+					<div class="retro-inset p-4">
+						<p class="m-0 font-mono text-xs font-bold uppercase tracking-[0.18em] text-ocean-900">
+							Signal
+						</p>
+						<p class="m-0 mt-2 text-base leading-7 text-ocean-900">
+							RSS is wired up, layouts are responsive, and the post pages keep a disciplined reading width.
+						</p>
+					</div>
+				</div>
+			</aside>
+		</div>
+
+		<section class="space-y-5">
+			<div class="flex items-end justify-between gap-4">
+				<div>
+					<span class="retro-badge bg-teal-300">Latest Posts</span>
+					<h2 class="retro-heading mt-3 text-3xl sm:text-4xl">Fresh from the archive</h2>
+				</div>
+				<a href="/blog" class="retro-button hidden sm:inline-flex">View All Posts</a>
+			</div>
+
+			<ul class="grid list-none gap-6 p-0 md:grid-cols-3">
+				{
+					posts.map((post) => (
+						<li class="retro-panel overflow-hidden bg-sand-100">
+							<a href={`/blog/${post.id}/`} class="block h-full no-underline hover:text-ocean-950">
+								<div class="star-divider h-2 border-b-2 border-ocean-950"></div>
+								<div class="space-y-3 p-4">
+									<p class="m-0 font-mono text-sm uppercase tracking-[0.14em] text-ocean-900/70">
+										<FormattedDate date={post.data.pubDate} />
+									</p>
+									<h3 class="retro-heading text-2xl leading-none">{post.data.title}</h3>
+									<p class="m-0 text-base leading-7 text-ocean-900">{post.data.description}</p>
+								</div>
+							</a>
+						</li>
+					))
+				}
+			</ul>
+		</section>
+	</section>
+</SiteLayout>

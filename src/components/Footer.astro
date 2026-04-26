@@ -1,0 +1,25 @@
+---
+const today = new Date();
+---
+
+<footer class="retro-panel mt-8 overflow-hidden">
+	<div class="star-divider h-3 border-b-2 border-ocean-950"></div>
+	<div class="grid gap-4 bg-sand-100 px-4 py-5 sm:grid-cols-[1fr_auto] sm:items-center">
+		<div>
+			<p class="m-0 font-display text-lg font-black uppercase tracking-[0.12em] text-ocean-950">
+				Static Dispatch
+			</p>
+			<p class="m-0 mt-2 max-w-2xl font-mono text-sm uppercase tracking-[0.16em] text-ocean-900">
+				© {today.getFullYear()} personal notes, glowing buttons, and a strict anti-eyestrain policy.
+			</p>
+		</div>
+		<div class="retro-inset px-3 py-2 text-center sm:text-right">
+			<p class="m-0 font-mono text-xs font-bold uppercase tracking-[0.18em] text-ocean-900">
+				Made with Astro + Tailwind
+			</p>
+			<p class="m-0 mt-1 font-mono text-xs uppercase tracking-[0.16em] text-ocean-900/70">
+				No autoplay MIDI included
+			</p>
+		</div>
+	</div>
+</footer>

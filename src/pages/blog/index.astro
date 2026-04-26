@@ -1,0 +1,72 @@
+---
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+import FormattedDate from '../../components/FormattedDate.astro';
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
+
+const posts = (await getCollection('blog')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+---
+
+<SiteLayout title={`${SITE_TITLE} | Blog`} description={SITE_DESCRIPTION}>
+	<section class="mx-auto max-w-6xl space-y-8">
+		<div class="retro-panel overflow-hidden">
+			<div class="star-divider h-3 border-b-2 border-ocean-950"></div>
+			<div class="grid gap-4 bg-sand-100 p-5 lg:grid-cols-[minmax(0,1fr)_280px] lg:items-end">
+				<div class="space-y-3">
+					<span class="retro-badge bg-pink-300">Archive</span>
+					<h1 class="retro-heading text-4xl sm:text-5xl">Blog Broadcasts</h1>
+					<p class="max-w-3xl text-lg leading-7 text-ocean-900">
+						Every post lives in a boxy little screen now. The vibe is old internet, but the spacing,
+						contrast, and reading width are tuned to avoid turning nostalgia into friction.
+					</p>
+				</div>
+				<div class="retro-inset p-4">
+					<p class="m-0 font-display text-sm font-black uppercase tracking-[0.18em] text-ocean-950">
+						Status
+					</p>
+					<p class="m-0 mt-2 font-mono text-sm uppercase tracking-[0.14em] text-ocean-900">
+						{posts.length} transmissions archived
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<ul class="grid list-none gap-6 p-0 md:grid-cols-2 xl:grid-cols-3">
+			{
+				posts.map((post, index) => (
+					<li class:list={['retro-panel overflow-hidden bg-sand-100', index === 0 && 'md:col-span-2 xl:col-span-2']}>
+						<a href={`/blog/${post.id}/`} class="block h-full no-underline hover:text-ocean-950">
+							<div class="star-divider h-2 border-b-2 border-ocean-950"></div>
+							<div class:list={['grid gap-4 p-4', index === 0 && 'lg:grid-cols-[1.25fr_minmax(0,1fr)] lg:items-center']}>
+								{post.data.heroImage && (
+									<div class="retro-panel overflow-hidden bg-white p-2">
+										<Image
+											width={720}
+											height={360}
+											src={post.data.heroImage}
+											alt=""
+											class="aspect-[16/9] w-full border-2 border-ocean-950 object-cover"
+										/>
+									</div>
+								)}
+								<div class="space-y-3">
+									<span class="retro-badge bg-teal-300">Entry #{posts.length - index}</span>
+									<h2 class:list={['retro-heading leading-none', index === 0 ? 'text-3xl sm:text-4xl' : 'text-2xl']}>
+										{post.data.title}
+									</h2>
+									<p class="m-0 text-base leading-7 text-ocean-900">{post.data.description}</p>
+									<p class="m-0 font-mono text-sm uppercase tracking-[0.14em] text-ocean-900/70">
+										<FormattedDate date={post.data.pubDate} />
+									</p>
+								</div>
+							</div>
+						</a>
+					</li>
+				))
+			}
+		</ul>
+	</section>
+</SiteLayout>

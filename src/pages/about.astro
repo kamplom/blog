@@ -1,0 +1,36 @@
+---
+import AboutHeroImage from '../assets/blog-placeholder-about.jpg';
+import Layout from '../layouts/BlogPost.astro';
+---
+
+<Layout
+	title="About This Site"
+	description="Why this blog looks like a lost page from 1999 without inheriting 1999's usability problems."
+	pubDate={new Date('August 08 2021')}
+	heroImage={AboutHeroImage}
+>
+	<p>
+		This blog is built around a simple constraint: keep the charm of early personal websites without
+		bringing back their worst habits. That means loud borders, bright accents, and playful layout
+		framing on the outside, with a clean reading column and predictable spacing once you are inside a
+		post.
+	</p>
+
+	<p>
+		Tailwind now drives the entire interface, which makes the visual language more consistent across
+		the homepage, archive, and article views. Shared utility patterns handle the retro panels, badge
+		elements, and color palette so the theme feels intentional instead of improvised page by page.
+	</p>
+
+	<p>
+		The palette leans into ocean blues, candy pinks, mint greens, and warm sand backgrounds because
+		that combination evokes old homepage aesthetics without reducing legibility. The body copy stays
+		in a calmer sans face, while the headings and micro-labels take the louder retro treatment.
+	</p>
+
+	<p>
+		If you want to personalize it further, the main things to replace are the site title, the home
+		page copy, this page’s text, and the placeholder post images. The structure is already set up so
+		those edits stay content-focused rather than requiring another round of layout work.
+	</p>
+</Layout>

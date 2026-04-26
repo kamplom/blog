@@ -1,0 +1,152 @@
+@import "tailwindcss";
+
+@theme {
+	--font-sans: var(--font-atkinson), sans-serif;
+	--font-display: "Trebuchet MS", "Verdana", sans-serif;
+	--font-mono: "Courier New", monospace;
+
+	--color-ocean-950: #04243f;
+	--color-ocean-900: #07345f;
+	--color-ocean-800: #0f507e;
+	--color-sand-100: #fff5d6;
+	--color-sand-200: #ffe7a5;
+	--color-lemon-300: #fff48a;
+	--color-pink-300: #ff92c2;
+	--color-pink-400: #ff5ca8;
+	--color-mint-300: #8affd4;
+	--color-teal-300: #74f0ff;
+	--color-ink-900: #182033;
+}
+
+@layer base {
+	:root {
+		color-scheme: only light;
+	}
+
+	html {
+		scroll-behavior: smooth;
+	}
+
+	body {
+		@apply m-0 font-sans text-[18px] leading-8 text-ink-900 antialiased;
+	}
+
+	a {
+		@apply text-ocean-900 underline decoration-pink-400 decoration-2 underline-offset-3 transition-colors duration-150;
+	}
+
+	a:hover {
+		@apply text-pink-400;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		@apply font-display font-black uppercase tracking-[0.08em] text-ocean-950;
+	}
+
+	img {
+		@apply h-auto max-w-full;
+	}
+
+	code {
+		@apply rounded border border-ocean-900/20 bg-white/70 px-1.5 py-0.5 font-mono text-[0.9em] text-ocean-900;
+	}
+
+	pre {
+		@apply overflow-x-auto rounded-none border-2 border-ocean-950 bg-ocean-950 p-4 text-sand-100 shadow-[6px_6px_0_0_rgba(24,32,51,0.85)];
+	}
+
+	pre code {
+		@apply border-0 bg-transparent p-0 text-inherit;
+	}
+
+	blockquote {
+		@apply my-8 border-l-4 border-pink-400 bg-pink-300/10 px-5 py-3 text-lg italic text-ocean-900;
+	}
+
+	hr {
+		@apply my-8 border-0 border-t-2 border-dashed border-ocean-900/40;
+	}
+}
+
+@layer components {
+	.retro-panel {
+		@apply border-4 border-ocean-950 bg-sand-100 shadow-[8px_8px_0_0_rgba(24,32,51,0.9)];
+	}
+
+	.retro-inset {
+		@apply border-2 border-ocean-900 bg-white/70 shadow-[inset_0_0_0_2px_rgba(255,255,255,0.75)];
+	}
+
+	.retro-heading {
+		@apply font-display text-ocean-950;
+	}
+
+	.retro-button {
+		@apply inline-flex items-center justify-center border-2 border-ocean-950 bg-lemon-300 px-4 py-2 font-display text-sm font-black uppercase tracking-[0.14em] text-ocean-950 no-underline shadow-[4px_4px_0_0_rgba(24,32,51,0.95)] transition duration-150 hover:translate-x-[2px] hover:translate-y-[2px] hover:text-ocean-950 hover:shadow-none;
+	}
+
+	.retro-badge {
+		@apply inline-block border-2 border-ocean-950 bg-mint-300 px-2 py-1 font-mono text-xs font-bold uppercase tracking-[0.18em] text-ocean-950;
+	}
+
+	.prose-retro {
+		@apply text-[1.02rem] leading-8 text-ink-900;
+	}
+
+	.prose-retro h2 {
+		@apply mt-12 text-3xl;
+	}
+
+	.prose-retro h3 {
+		@apply mt-10 text-2xl;
+	}
+
+	.prose-retro p,
+	.prose-retro ul,
+	.prose-retro ol {
+		@apply my-5;
+	}
+
+	.prose-retro ul,
+	.prose-retro ol {
+		@apply pl-6;
+	}
+
+	.prose-retro li {
+		@apply my-2;
+	}
+
+	.prose-retro table {
+		@apply my-6 w-full border-collapse;
+	}
+
+	.prose-retro th,
+	.prose-retro td {
+		@apply border-2 border-ocean-900/30 px-3 py-2 text-left;
+	}
+}
+
+@utility star-divider {
+	background-image:
+		radial-gradient(circle, rgba(255, 255, 255, 0.9) 0 1px, transparent 1.5px),
+		linear-gradient(90deg, #ff5ca8, #74f0ff, #fff48a, #8affd4, #ff5ca8);
+	background-size: 22px 22px, 100% 100%;
+}
+
+.sr-only {
+	border: 0;
+	padding: 0;
+	margin: 0;
+	position: absolute !important;
+	height: 1px;
+	width: 1px;
+	overflow: hidden;
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+	white-space: nowrap;
+}

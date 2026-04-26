@@ -1,0 +1,49 @@
+---
+import { SITE_TITLE } from '../consts';
+import HeaderLink from './HeaderLink.astro';
+---
+
+<header class="retro-panel overflow-hidden">
+	<div class="star-divider h-3 border-b-2 border-ocean-950"></div>
+	<div class="grid gap-4 bg-[linear-gradient(180deg,rgba(255,255,255,0.65),rgba(255,245,214,0.95))] px-4 py-4 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
+		<div class="space-y-3">
+			<a href="/" class="inline-block no-underline hover:text-ocean-950">
+				<div class="retro-badge mb-2 bg-pink-300">Personal Homepage</div>
+				<h1 class="retro-heading text-3xl sm:text-4xl">{SITE_TITLE}</h1>
+			</a>
+			<p class="max-w-2xl font-mono text-sm uppercase tracking-[0.18em] text-ocean-900">
+				Early-web sparkle, modern spacing, no unreadable chaos.
+			</p>
+		</div>
+		<div class="space-y-3 lg:text-right">
+			<nav class="flex flex-wrap gap-3 lg:justify-end">
+				<HeaderLink
+					href="/"
+					class="border-2 border-ocean-950 bg-teal-300 px-3 py-2 font-display text-sm font-black uppercase tracking-[0.14em] text-ocean-950 no-underline shadow-[4px_4px_0_0_rgba(24,32,51,0.95)] transition hover:translate-x-[2px] hover:translate-y-[2px] hover:text-ocean-950 hover:shadow-none active:bg-lemon-300"
+				>
+					Home
+				</HeaderLink>
+				<HeaderLink
+					href="/blog"
+					class="border-2 border-ocean-950 bg-teal-300 px-3 py-2 font-display text-sm font-black uppercase tracking-[0.14em] text-ocean-950 no-underline shadow-[4px_4px_0_0_rgba(24,32,51,0.95)] transition hover:translate-x-[2px] hover:translate-y-[2px] hover:text-ocean-950 hover:shadow-none active:bg-lemon-300"
+				>
+					Blog
+				</HeaderLink>
+				<HeaderLink
+					href="/about"
+					class="border-2 border-ocean-950 bg-teal-300 px-3 py-2 font-display text-sm font-black uppercase tracking-[0.14em] text-ocean-950 no-underline shadow-[4px_4px_0_0_rgba(24,32,51,0.95)] transition hover:translate-x-[2px] hover:translate-y-[2px] hover:text-ocean-950 hover:shadow-none active:bg-lemon-300"
+				>
+					About
+				</HeaderLink>
+			</nav>
+			<div class="retro-inset inline-flex flex-wrap gap-2 px-3 py-2 text-left lg:ml-auto">
+				<span class="font-mono text-xs font-bold uppercase tracking-[0.18em] text-ocean-900">
+					Best viewed with curiosity
+				</span>
+				<span class="font-mono text-xs uppercase tracking-[0.16em] text-ocean-900/70">
+					RSS enabled
+				</span>
+			</div>
+		</div>
+	</div>
+</header>
