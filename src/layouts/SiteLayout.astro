@@ -16,11 +16,9 @@ const { title, description } = Astro.props;
 	<head>
 		<BaseHead title={title} description={description} />
 	</head>
-	<body class="min-h-screen bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.35),_transparent_30%),linear-gradient(180deg,_#042b52_0%,_#105d7b_28%,_#ffd07a_28%,_#ffefbf_100%)] text-slate-950">
-		<div class="relative min-h-screen overflow-x-hidden">
-			<div class="pointer-events-none absolute inset-0 opacity-20 [background-image:radial-gradient(#ffffff_0.9px,transparent_0.9px)] [background-size:22px_22px]"></div>
-			<div class="pointer-events-none absolute inset-x-0 top-0 h-40 bg-[linear-gradient(90deg,transparent_0%,rgba(255,255,255,0.6)_50%,transparent_100%)] opacity-50"></div>
-			<div class="relative mx-auto flex min-h-screen w-full max-w-7xl flex-col px-4 py-4 sm:px-6 lg:px-8">
+	<body class="min-h-screen text-slate-950">
+		<div class="relative min-h-screen overflow-x-hidden bg-[#5f7fae]">
+			<div class="relative mx-auto flex min-h-screen w-full max-w-[980px] flex-col px-2 py-3 sm:px-3">
 				<Header />
 				<main class="flex-1 py-6">
 					<slot />

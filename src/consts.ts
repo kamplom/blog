@@ -4,3 +4,4 @@
 export const SITE_TITLE = 'Static Dispatch';
 export const SITE_DESCRIPTION =
 	'A personal blog styled like an early web relic, rebuilt for modern reading comfort.';
+export const SITE_URL = 'https://kamplom.me';
