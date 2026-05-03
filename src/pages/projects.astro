@@ -1,0 +1,28 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import { SITE_TITLE } from '../consts';
+---
+
+<SiteLayout title={`Projects | ${SITE_TITLE}`} description="Projects built by kamplom.">
+	<section class="mx-auto max-w-[940px] space-y-4">
+		<div class="retro-panel p-4 sm:p-5">
+			<h1 class="retro-heading text-2xl sm:text-3xl">Projects</h1>
+			<p class="max-w-3xl text-base leading-7 text-ocean-900">
+				Things I build and maintain.
+			</p>
+		</div>
+
+		<section class="retro-panel p-4 sm:p-5">
+			<article class="space-y-3 border-l-2 border-ocean-900/30 pl-3">
+				<h2 class="retro-heading text-2xl leading-tight">PhotoMeasure</h2>
+				<p class="m-0 text-base leading-7 text-ocean-900/90">
+					A measurement-focused photo utility.
+				</p>
+				<div class="flex flex-wrap gap-3 font-mono text-sm">
+					<a href="https://photomeasure.kamplom.me" rel="noreferrer">Live site</a>
+					<a href="https://github.com/kamplom/photomeasure" rel="noreferrer">GitHub repository</a>
+				</div>
+			</article>
+		</section>
+	</section>
+</SiteLayout>
